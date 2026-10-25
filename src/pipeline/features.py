@@ -9,13 +9,13 @@ logger = logging.getLogger("features")
 
 def engineer_features(input_path: str, output_path: str) -> pd.DataFrame:
     df = pd.read_csv(input_path)
-          
-         # original features: sepal length, sepal width, petal length, petal width
+
+    # original features: sepal length, sepal width, petal length, petal width
     # creating new features
-    df["sepal_area"] = df["sepal length (cm)"] * df["sepal width (cm)"]   
-    df["petal_area"] = df["petal length (cm)"] * df["petal width (cm)"]   
+    df["sepal_area"] = df["sepal length (cm)"] * df["sepal width (cm)"]
+    df["petal_area"] = df["petal length (cm)"] * df["petal width (cm)"]
     df["sepal_to_petal_length_ratio"] = (
-    df["sepal length (cm)"] / df["petal length (cm)"].replace(0, pd.NA)
+        df["sepal length (cm)"] / df["petal length (cm)"].replace(0, pd.NA)
     )
     df["petal_length_bin"] = pd.cut(
         df["petal length (cm)"],

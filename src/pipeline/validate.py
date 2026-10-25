@@ -1,6 +1,6 @@
 import argparse
 import logging
-import sys #interacts with the Python system
+import sys  # interacts with the Python system
 
 import pandas as pd
 
@@ -45,7 +45,8 @@ def validate(input_path: str) -> pd.DataFrame:
     for col, (low, high) in RANGE_CHECKS.items():
         out_of_range = df[(df[col] < low) | (df[col] > high)]
         if not out_of_range.empty:
-            errors.append(f"{len(out_of_range)} rows out of expected range for '{col}' ({low}-{high})")
+            errors.append(
+                f"{len(out_of_range)} rows out of expected range for '{col}' ({low}-{high})")
 
     if errors:
         for e in errors:
@@ -55,7 +56,8 @@ def validate(input_path: str) -> pd.DataFrame:
             + "; ".join(errors)
         )
 
-    logger.info("Validation PASSED: %d rows, %d columns, all checks satisfied", len(df), df.shape[1])
+    logger.info("Validation PASSED: %d rows, %d columns, all checks satisfied",
+                len(df), df.shape[1])
     return df
 
 
@@ -67,4 +69,4 @@ if __name__ == "__main__":
         validate(args.input)
     except DataValidationError as e:
         logger.error("Pipeline halted: %s", e)
-        sys.exit(1) 
+        sys.exit(1)

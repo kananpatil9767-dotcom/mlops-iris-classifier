@@ -2,7 +2,8 @@
 import mlflow  # type: ignore[import-not-found]
 import pandas as pd
 
-from sklearn.model_selection import train_test_split, cross_val_score  # type: ignore[reportMissingModuleSource]
+# type: ignore[reportMissingModuleSource]
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import LabelEncoder  # type: ignore[reportMissingModuleSource]
 from sklearn.tree import DecisionTreeClassifier  # type: ignore[reportMissingModuleSource]
 
